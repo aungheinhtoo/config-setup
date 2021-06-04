@@ -7,7 +7,7 @@ sudo apt update
 
 # Install apt packages
 sudo apt upgrade -y
-sudo apt install piper  -y 
+sudo apt install piper font-manager -y 
 
 # Flatpak
 flatpak install flathub com.spotify.Client -y
@@ -17,7 +17,7 @@ flatpak install flathub com.visualstudio.code -y
 flatpak install flathub us.zoom.Zoom -y
 
 # Install required fonts for user only. /usr/share/fonts/truetype/ for all users.
-sudo cp ./fonts/* /usr/share/fonts/truetype/
+# sudo cp ./fonts/* /usr/share/fonts/truetype/
 
 # Install miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ./miniconda.sh
