@@ -10,7 +10,7 @@ sudo apt update
 # Install apt packages
 sudo apt install gh -y
 sudo apt upgrade -y
-sudo apt install piper font-manager code gnome-tweaks -y 
+sudo apt install htop piper font-manager code gnome-tweaks -y 
 
 # Flatpak
 flatpak install flathub com.spotify.Client -y
