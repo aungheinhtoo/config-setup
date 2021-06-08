@@ -3,14 +3,21 @@
 git config --global user.email "aungheinhtoo@outlook.com"
 git config --global user.name "Aung Hein"
 
+# Github CLI
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+
+# Github Desktop
+wget -qO - https://packagecloud.io/shiftkey/desktop/gpgkey | sudo tee /etc/apt/trusted.gpg.d/shiftkey-desktop.asc > /dev/null
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftky-desktop.list'
+
 sudo apt update
 
 # Install apt packages
 sudo apt install gh -y
 sudo apt upgrade -y
-sudo apt install htop piper font-manager code gnome-tweaks -y 
+sudo apt install htop piper font-manager code gnome-tweaks ubuntu-restricted-extras -y 
+sudo apt install github-desktop -y
 
 # Flatpak
 flatpak install flathub com.spotify.Client -y
@@ -37,3 +44,5 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # GTK Theme
 git clone https://github.com/dracula/gtk.git ~/.themes/Dracula
+wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
+

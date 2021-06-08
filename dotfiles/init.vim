@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'dracula/vim'
 
-
 " File Explorer
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -22,10 +21,6 @@ Plug 'peitalin/vim-jsx-typescript'
 
 " " Initialize plugin system
 call plug#end()
-
-
-
-
 
 " Config Section
 if (has("termguicolors"))
@@ -50,8 +45,12 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-  split term://powershell
-    resize 10
+  if has("unix")
+    split term://zsh
+  else
+    split term://powershell
+  endif
+      resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 " use alt+hjkl to move between split/vsplit panels
