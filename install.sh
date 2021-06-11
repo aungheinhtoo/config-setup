@@ -18,6 +18,9 @@ sudo apt install gh -y
 sudo apt upgrade -y
 sudo apt install htop piper font-manager code gnome-tweaks ubuntu-restricted-extras -y 
 sudo apt install github-desktop -y
+curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb -y
+
 
 # Flatpak
 flatpak install flathub com.spotify.Client -y
