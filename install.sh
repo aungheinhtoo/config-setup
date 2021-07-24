@@ -15,11 +15,11 @@ sudo apt update
 
 # Install apt packages
 sudo apt install gh -y
-sudo apt upgrade -y
-sudo apt install htop piper neovim font-manager code gnome-tweaks ubuntu-restricted-extras -y 
-sudo apt install github-desktop -y
 curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
+sudo apt upgrade -y
+sudo apt install htop piper neovim font-manager code gnome-tweaks ubuntu-restricted-extras fonts-inter-variable -y 
+sudo apt install github-desktop -y
 
 
 # Flatpak
@@ -52,3 +52,6 @@ git clone https://github.com/dracula/gtk.git ~/.themes/Dracula
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
 
 timedatectl set-local-rtc 1 --adjust-system-clock
+
+# Cleanup
+rm ./miniconda.sh ./google-chrome-stable_current_amd64.deb
