@@ -69,7 +69,7 @@ systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable org.cups.cupsd
 
-
+### install kde now
 
 exit
 umount -l /mnt
