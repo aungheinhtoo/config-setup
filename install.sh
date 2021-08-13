@@ -18,7 +18,7 @@ sudo apt install gh -y
 curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
 sudo apt upgrade -y
-sudo apt install htop piper neovim font-manager code gnome-tweaks ubuntu-restricted-extras fonts-inter-variable -y 
+sudo apt install htop piper neovim font-manager code gnome-tweaks fonts-inter-variable -y 
 sudo apt install github-desktop -y
 
 
@@ -51,7 +51,14 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
 git clone https://github.com/dracula/gtk.git ~/.themes/Dracula
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
 
+# P10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+
 timedatectl set-local-rtc 1 --adjust-system-clock
 
 # Cleanup
 rm ./miniconda.sh ./google-chrome-stable_current_amd64.deb
+
+# Requires input
+sudo apt install ubuntu-restricted-extras -y 
