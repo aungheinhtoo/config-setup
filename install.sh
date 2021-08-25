@@ -14,12 +14,13 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githu
 sudo apt update
 
 # Install apt packages
-sudo apt install gh -y
+sudo apt upgrade -y
+sudo apt install gh git-lfs -y
 curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
-sudo apt upgrade -y
 sudo apt install htop piper neovim font-manager code gnome-tweaks fonts-inter-variable -y 
 sudo apt install github-desktop -y
+sudo apt install tlp tlp-rdw -y
 
 
 # Flatpak
@@ -54,8 +55,11 @@ wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
 # P10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-
-timedatectl set-local-rtc 1 --adjust-system-clock
+# Vim plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+mkdir ~/.config/nvim/
+cp ./dotfiles/init.vim ~/.config/nvim/init.vim
 
 # Cleanup
 rm ./miniconda.sh ./google-chrome-stable_current_amd64.deb

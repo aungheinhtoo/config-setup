@@ -2,6 +2,13 @@
 https://www.medo64.com/2019/03/remap-m720-mouse-buttons-under-ubuntu/
 
 ### Monitor
+```
 sudo cp ~/.config/monitors.xml ~gdm/.config/monitors.xml
 sudo chown gdm:gdm ~gdm/.config/monitors.xml
+```
 
+### Dual Boot
+```
+sudo mount /dev/sdb1 /mnt
+sudo cp -ax /mnt/EFI/Microsoft /boot/efi/EFI
+```
