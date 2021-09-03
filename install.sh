@@ -1,4 +1,5 @@
 #!/bin/bash
+# This probably only works for pop OS.
 
 git config --global user.email "aungheinhtoo@outlook.com"
 git config --global user.name "Aung Hein"
@@ -13,6 +14,21 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githu
 
 sudo apt update
 
+# Docker install
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+
 # Install apt packages
 sudo apt upgrade -y
 sudo apt install gh git-lfs -y
@@ -20,14 +36,19 @@ curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.de
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
 sudo apt install htop piper neovim font-manager code gnome-tweaks fonts-inter-variable -y 
 sudo apt install github-desktop -y
-sudo apt install tlp tlp-rdw -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+# Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 
 # Flatpak
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub org.videolan.VLC -y
-flatpak install flathub org.telegram.desktop -y
 flatpak install flathub us.zoom.Zoom -y
+flatpak install flathub org.telegram.desktop -y
+flatpak install flathub com.getpostman.Postman -y
+flatpak install flathub com.axosoft.GitKraken -y
 
 # Install required fonts for user only. /usr/share/fonts/truetype/ for all users.
 # sudo cp ./fonts/* /usr/share/fonts/truetype/
@@ -63,6 +84,18 @@ cp ./dotfiles/init.vim ~/.config/nvim/init.vim
 
 # Cleanup
 rm ./miniconda.sh ./google-chrome-stable_current_amd64.deb
+
+# Logiops
+sudo cp ./dotfiles/logid.cfg /etc/logid.cfg
+sudo apt install cmake libevdev-dev libudev-dev libconfig++-dev -y
+cd ~/Downloads
+git clone https://github.com/PixlOne/logiops.git
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo systemctl enable --now logid
 
 # Requires input
 sudo apt install ubuntu-restricted-extras -y 
