@@ -28,7 +28,10 @@
           "style": "plain",
           "foreground": "#FFE700",
           "properties": {
-            "prefix": ""
+            "prefix": "",
+            "display_status": true,
+            "display_stash_count": true,
+            "display_upstream_icon": true
           }
         },
         {
