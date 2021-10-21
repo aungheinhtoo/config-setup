@@ -7,9 +7,18 @@
       "newline": true,
       "segments": [
         {
+          "type": "os",
+          "style": "plain",
+          "foreground": "#7DBBE6",
+          "properties": {
+            "postfix": " ",
+            "windows": "\uf17a"
+          }
+        },
+        {
           "type": "python",
           "style": "powerline",
-          "foreground": "#FF6347",
+          "foreground": "#AD5C51",
           "properties": {
             "prefix": "\uE235 "
           }
@@ -17,7 +26,7 @@
         {
           "type": "path",
           "style": "plain",
-          "foreground": "#77E4F7",
+          "foreground": "#9CDAF1",
           "properties": {
             "prefix": "",
             "style": "agnoster_short"

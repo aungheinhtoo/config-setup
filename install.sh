@@ -90,6 +90,7 @@ sudo cp ./dotfiles/logid.cfg /etc/logid.cfg
 sudo apt install cmake libevdev-dev libudev-dev libconfig++-dev -y
 cd ~/Downloads
 git clone https://github.com/PixlOne/logiops.git
+cd logiops
 mkdir build
 cd build
 cmake ..
