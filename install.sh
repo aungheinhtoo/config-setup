@@ -20,7 +20,7 @@ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release
+    lsb-release -y
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
@@ -32,8 +32,6 @@ sudo apt update
 # Install apt packages
 sudo apt upgrade -y
 sudo apt install gh git-lfs -y
-curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb -y
 sudo apt install htop piper neovim font-manager code gnome-tweaks fonts-inter-variable -y 
 sudo apt install github-desktop -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
@@ -67,7 +65,7 @@ zsh ./miniconda.sh -b -u -p "/home/aungheinhtoo/miniconda3"
 /home/aungheinhtoo/miniconda3/bin/conda init zsh
 
 # nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | zsh
 
 # GTK Theme
 git clone https://github.com/dracula/gtk.git ~/.themes/Dracula
@@ -76,27 +74,7 @@ wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
 # P10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-# Vim plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-mkdir ~/.config/nvim/
-cp ./dotfiles/init.vim ~/.config/nvim/init.vim
 
 # Cleanup
-rm ./miniconda.sh ./google-chrome-stable_current_amd64.deb
+rm ./miniconda.sh
 
-# Logiops
-sudo cp ./dotfiles/logid.cfg /etc/logid.cfg
-sudo apt install cmake libevdev-dev libudev-dev libconfig++-dev -y
-cd ~/Downloads
-git clone https://github.com/PixlOne/logiops.git
-cd logiops
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-sudo systemctl enable --now logid
-
-# Requires input
-sudo apt install ubuntu-restricted-extras -y 
